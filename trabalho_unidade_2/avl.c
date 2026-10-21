@@ -110,3 +110,136 @@ No *inserir(No *no, int valor) {
     // Retorna o ponteiro do nó (inalterado se não houve rotação)
     return no;
 }
+
+// Função auxiliar para encontrar o nó com o menor valor (necessária para remoção de nó com dois filhos)
+No *noMinimo(No *no) {
+    No *atual = no;
+    while (atual->esquerdo != NULL)
+        atual = atual->esquerdo;
+    return atual;
+}
+
+// Função recursiva para remover um valor e manter a árvore AVL balanceada
+No *remover(No *raiz, int valor) {
+    // 1. Remoção padrão de Árvore de Busca Binária
+    if (raiz == NULL) {
+        printf("Aviso: O valor %d nao foi encontrado para remocao.\n", valor);
+        return raiz;
+    }
+
+    if (valor < raiz->valor)
+        raiz->esquerdo = remover(raiz->esquerdo, valor);
+    else if (valor > raiz->valor)
+        raiz->direito = remover(raiz->direito, valor);
+    else {
+        // Nó encontrado
+        // Caso 1 e 2: Nó com um filho ou nenhum filho
+        if ((raiz->esquerdo == NULL) || (raiz->direito == NULL)) {
+            No *temp = raiz->esquerdo ? raiz->esquerdo : raiz->direito;
+
+            // Sem filhos
+            if (temp == NULL) {
+                temp = raiz;
+                raiz = NULL;
+            } else // Um filho
+                *raiz = *temp; // Copia o conteúdo do filho não vazio
+            
+            free(temp);
+        } else {
+            // Caso 3: Nó com dois filhos
+            // Obtém o sucessor em ordem (o menor valor da sub-árvore direita)
+            No *temp = noMinimo(raiz->direito);
+            
+            // Copia o valor do sucessor para este nó
+            raiz->valor = temp->valor;
+            
+            // Remove o sucessor
+            raiz->direito = remover(raiz->direito, temp->valor);
+        }
+    }
+
+    // Se a árvore tinha apenas um nó, retorna
+    if (raiz == NULL)
+        return raiz;
+
+    // 2. Atualiza a altura do nó atual
+    raiz->altura = 1 + maior(altura(raiz->esquerdo), altura(raiz->direito));
+
+    // 3. Calcula o fator de balanceamento deste nó
+    int balanceamento = fatorDeBalanceamento(raiz);
+
+    // 4. Analisa os casos de desbalanceamento e aplica as rotações
+
+    // Caso Esquerda-Esquerda
+    if (balanceamento > 1 && fatorDeBalanceamento(raiz->esquerdo) >= 0)
+        return rotacaoDireita(raiz);
+
+    // Caso Esquerda-Direita
+    if (balanceamento > 1 && fatorDeBalanceamento(raiz->esquerdo) < 0) {
+        raiz->esquerdo = rotacaoEsquerda(raiz->esquerdo);
+        return rotacaoDireita(raiz);
+    }
+
+    // Caso Direita-Direita
+    if (balanceamento < -1 && fatorDeBalanceamento(raiz->direito) <= 0)
+        return rotacaoEsquerda(raiz);
+
+    // Caso Direita-Esquerda
+    if (balanceamento < -1 && fatorDeBalanceamento(raiz->direito) > 0) {
+        raiz->direito = rotacaoDireita(raiz->direito);
+        return rotacaoEsquerda(raiz);
+    }
+
+    return raiz;
+}
+
+// Função para buscar um elemento na árvore
+No *buscar(No *raiz, int valor) {
+    if (raiz == NULL) {
+        printf("Busca: O valor %d nao existe na arvore.\n", valor);
+        return NULL;
+    }
+    
+    if (valor == raiz->valor) {
+        printf("Busca: O valor %d foi encontrado na arvore.\n", valor);
+        return raiz;
+    }
+    
+    if (valor < raiz->valor)
+        return buscar(raiz->esquerdo, valor);
+        
+    return buscar(raiz->direito, valor);
+}
+
+// Função para percorrer a árvore em ordem (imprime os elementos em ordem crescente)
+void emOrdem(No *raiz) {
+    if (raiz != NULL) {
+        emOrdem(raiz->esquerdo);
+        printf("%d ", raiz->valor);
+        emOrdem(raiz->direito);
+    }
+}
+
+// Função para imprimir e visualizar a estrutura da árvore no terminal
+// O parâmetro 'espaco' controla o espaçamento para simular a hierarquia
+void visualizarArvore(No *raiz, int espaco) {
+    // Caso base
+    if (raiz == NULL)
+        return;
+
+    // Aumenta a distância entre os níveis da árvore
+    int espacamento_nivel = 5;
+    espaco += espacamento_nivel;
+
+    // Processa primeiro o filho direito (aparece na parte superior do terminal)
+    visualizarArvore(raiz->direito, espaco);
+
+    // Imprime o nó atual após os espaços corretos
+    printf("\n");
+    for (int i = espacamento_nivel; i < espaco; i++)
+        printf(" ");
+    printf("%d\n", raiz->valor);
+
+    // Processa o filho esquerdo (aparece na parte inferior do terminal)
+    visualizarArvore(raiz->esquerdo, espaco);
+}

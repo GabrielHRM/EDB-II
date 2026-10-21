@@ -17,9 +17,10 @@ No *rotacaoDireita(No *y);
 No *rotacaoEsquerda(No *x);
 
 No *inserir(No *no, int valor);
-// No *remover(No *no, int valor);
-// No *buscar(No *no, int valor);
-// void emOrdem(No *no);
-// void visualizarArvore(No *no, int espaco);
+No *noMinimo(No *no);
+No *remover(No *raiz, int valor);
+No *buscar(No *raiz, int valor);
+void emOrdem(No *no);
+void visualizarArvore(No *no, int espaco);
 
 #endif
