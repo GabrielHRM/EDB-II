@@ -117,6 +117,5 @@ int main() {
 
     } while (opcaoPrincipal != 0);
 
-    printf("A encerrar o programa...\n");
     return 0;
 }
