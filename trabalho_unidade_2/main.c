@@ -61,10 +61,6 @@ int main() {
                         printf("Estrutura da Arvore AVL:\n");
                         visualizarArvore(raizAVL, 0);
                         break;
-                    case 0:
-                        printf("A voltar ao menu principal...\n");
-                        // Opcional: libertar a memória da árvore AVL aqui
-                        break;
                     default:
                         printf("Opcao invalida!\n");
                 }
@@ -101,10 +97,6 @@ int main() {
                     case 5:
                         printf("Estrutura da Arvore Rubro-Negra:\n");
                         visualizarArvoreRN(raizRN, 0);
-                        break;
-                    case 0:
-                        printf("A voltar ao menu principal...\n");
-                        // Opcional: libertar a memória da árvore RN aqui
                         break;
                     default:
                         printf("Opcao invalida!\n");
