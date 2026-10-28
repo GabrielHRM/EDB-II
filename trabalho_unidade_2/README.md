@@ -33,9 +33,9 @@ O repositório está organizado para fornecer acesso direto ao código-fonte com
         ├── avl.c              # Implementação e lógica de balanceamento da Árvore AVL
         ├── avl.h              # Definições de estruturas e protótipos da Árvore AVL
         ├── main.c             # Ponto de entrada e menu interativo do sistema
-        ├── README.md          # Documentação técnica do projeto
         ├── rn.c               # Implementação, rebalanceamento e coloração da Árvore Rubro-Negra
         └── rn.h               # Definições de estruturas e protótipos da Árvore Rubro-Negra
+    ├── README.md          # Documentação técnica do projeto
 ```
 
 ---
