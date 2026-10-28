@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "avl.h"
 
+int rotacoesAVL = 0;
+
 // Função para obter a altura de um nó
 int altura(No *N) {
     if (N == NULL)
@@ -23,6 +25,7 @@ int fatorDeBalanceamento(No *N) {
 
 // Rotação simples à direita
 No *rotacaoDireita(No *y) {
+    rotacoesAVL++;
     No *x = y->esquerdo;
     No *T2 = x->direito;
 
@@ -39,6 +42,7 @@ No *rotacaoDireita(No *y) {
 
 // Rotação simples à esquerda
 No *rotacaoEsquerda(No *x) {
+    rotacoesAVL++;
     No *y = x->direito;
     No *T2 = y->esquerdo;
 

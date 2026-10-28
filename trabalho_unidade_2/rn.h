@@ -22,5 +22,6 @@ void removerRN(NoRN **raiz, int valor);
 NoRN *buscarRN(NoRN *raiz, int valor);
 void emOrdemRN(NoRN *raiz);
 void visualizarArvoreRN(NoRN *raiz, int espaco);
+extern int rotacoesRN;
 
 #endif // RN_H

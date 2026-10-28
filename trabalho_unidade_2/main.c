@@ -40,12 +40,16 @@ int main() {
                     case 1:
                         printf("Digite o valor a inserir: ");
                         scanf("%d", &valor);
+                        rotacoesAVL = 0;
                         raizAVL = inserir(raizAVL, valor);
+                        printf("-> Valor %d inserido. Rotacoes AVL realizadas: %d\n", valor, rotacoesAVL);
                         break;
                     case 2:
                         printf("Digite o valor a remover: ");
                         scanf("%d", &valor);
+                        rotacoesAVL = 0;
                         raizAVL = remover(raizAVL, valor);
+                        printf("-> Remocao concluida. Rotacoes AVL realizadas: %d\n", rotacoesAVL);
                         break;
                     case 3:
                         printf("Digite o valor a buscar: ");
@@ -77,12 +81,16 @@ int main() {
                     case 1:
                         printf("Digite o valor a inserir: ");
                         scanf("%d", &valor);
+                        rotacoesRN = 0;
                         inserirRN(&raizRN, valor);
+                        printf("-> Valor %d inserido. Rotacoes RN realizadas: %d\n", valor, rotacoesRN);
                         break;
                     case 2:
                         printf("Digite o valor a remover: ");
                         scanf("%d", &valor);
+                        rotacoesRN = 0;
                         removerRN(&raizRN, valor);
+                        printf("-> Remocao concluida. Rotacoes RN realizadas: %d\n", rotacoesRN);
                         break;
                     case 3:
                         printf("Digite o valor a buscar: ");

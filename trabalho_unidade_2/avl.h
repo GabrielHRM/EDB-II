@@ -22,5 +22,6 @@ No *remover(No *raiz, int valor);
 No *buscar(No *raiz, int valor);
 void emOrdem(No *no);
 void visualizarArvore(No *no, int espaco);
+extern int rotacoesAVL;
 
 #endif

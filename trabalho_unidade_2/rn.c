@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "rn.h"
 
+int rotacoesRN = 0;
+
 // Função auxiliar para criar um novo nó (sempre inserido como VERMELHO por regra)
 NoRN *criarNoRN(int valor) {
     NoRN *novoNo = (NoRN *)malloc(sizeof(NoRN));
@@ -15,6 +17,7 @@ NoRN *criarNoRN(int valor) {
 
 // Rotação simples à esquerda (Rubro-Negra)
 void rotacaoEsquerdaRN(NoRN **raiz, NoRN *x) {
+    rotacoesRN++;
     NoRN *y = x->direito;
     x->direito = y->esquerdo;
 
@@ -36,6 +39,7 @@ void rotacaoEsquerdaRN(NoRN **raiz, NoRN *x) {
 
 // Rotação simples à direita (Rubro-Negra)
 void rotacaoDireitaRN(NoRN **raiz, NoRN *y) {
+    rotacoesRN++;
     NoRN *x = y->esquerdo;
     y->esquerdo = x->direito;
 
