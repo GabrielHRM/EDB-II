@@ -120,11 +120,9 @@ void inserirRN(NoRN **raiz, int valor) {
         y = x;
         if (z->valor < x->valor){
             x = x->esquerdo;
-            printf("-> Valor %d inserido.", valor);
         }
         else if (z->valor > x->valor){
             x = x->direito;
-            printf("-> Valor %d inserido.", valor);
         }
         else {
             // Valor repetido encontrado
@@ -142,6 +140,9 @@ void inserirRN(NoRN **raiz, int valor) {
         y->esquerdo = z;
     else
         y->direito = z;
+
+    // Mensagem de sucesso após confirmar a inserção
+    printf("-> Valor %d inserido com sucesso.\n", valor);
 
     // 2. Corrige as violações das propriedades Rubro-Negras
     consertarInsercaoRN(raiz, z);
@@ -293,9 +294,9 @@ void removerRN(NoRN **raiz, int valor) {
     if (z == NULL) {
         printf("Aviso: O valor %d nao foi encontrado para remocao.\n", valor);
         return;
-    }else{
-        printf("-> Remocao concluida.");
     }
+
+    printf("-> Remocao do valor %d concluida.\n", valor);
 
     NoRN *y = z;
     NoRN *x = NULL;

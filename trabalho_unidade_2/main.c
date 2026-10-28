@@ -41,13 +41,13 @@ int main() {
                         printf("Digite o valor a inserir: ");
                         scanf("%d", &valor);
                         raizAVL = inserir(raizAVL, valor);
-                        printf("\n-> Total de rotacoes AVL ate agora: %d\n", rotacoesAVL);
+                        printf("-> Total de rotacoes AVL ate agora: %d\n", rotacoesAVL);
                         break;
                     case 2:
                         printf("Digite o valor a remover: ");
                         scanf("%d", &valor);
                         raizAVL = remover(raizAVL, valor);
-                        printf("\n-> Total de rotacoes AVL ate agora: %d\n", rotacoesAVL);
+                        printf("-> Total de rotacoes AVL ate agora: %d\n", rotacoesAVL);
                         break;
                     case 3:
                         printf("Digite o valor a buscar: ");
@@ -63,8 +63,11 @@ int main() {
                         printf("Estrutura da Arvore AVL:\n");
                         visualizarArvore(raizAVL, 0);
                         break;
+                    case 0:
+                        printf("Saindo...");
+                        break; // Sai do sub-menu sem exibir "Opcao invalida!"
                     default:
-                        printf("Opcao invalida!\n");
+                        break;
                 }
             } while (opcaoOperacao != 0);
 
@@ -80,13 +83,13 @@ int main() {
                         printf("Digite o valor a inserir: ");
                         scanf("%d", &valor);
                         inserirRN(&raizRN, valor);
-                        printf("\n-> Total de rotacoes RN ate agora: %d\n", rotacoesRN);
+                        printf("-> Total de rotacoes RN ate agora: %d\n", rotacoesRN);
                         break;
                     case 2:
                         printf("Digite o valor a remover: ");
                         scanf("%d", &valor);
                         removerRN(&raizRN, valor);
-                        printf("\n-> Total de rotacoes RN ate agora: %d\n", rotacoesRN);
+                        printf("-> Total de rotacoes RN ate agora: %d\n", rotacoesRN);
                         break;
                     case 3:
                         printf("Digite o valor a buscar: ");
@@ -102,8 +105,11 @@ int main() {
                         printf("Estrutura da Arvore Rubro-Negra:\n");
                         visualizarArvoreRN(raizRN, 0);
                         break;
+                    case 0:
+                        printf("Saindo...");
+                        break; // Sai do sub-menu sem exibir "Opcao invalida!"
                     default:
-                        printf("Opcao invalida!\n");
+                        break;
                 }
             } while (opcaoOperacao != 0);
             

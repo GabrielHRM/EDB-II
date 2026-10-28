@@ -70,16 +70,16 @@ No *novoNo(int valor) {
 // Função recursiva para inserir um valor e balancear a árvore AVL
 No *inserir(No *no, int valor) {
     // 1. Inserção normal de Árvore de Busca Binária
-    if (no == NULL)
+    if (no == NULL) {
+        printf("-> Valor %d inserido com sucesso.\n", valor);
         return novoNo(valor);
+    }
 
     if (valor < no->valor){
         no->esquerdo = inserir(no->esquerdo, valor);
-        printf("-> Valor %d inserido.", valor);
     }
     else if (valor > no->valor){
         no->direito = inserir(no->direito, valor);
-        printf("-> Valor %d inserido.", valor);
     }
     else {
         // Valores repetidos não são permitidos
@@ -94,28 +94,22 @@ No *inserir(No *no, int valor) {
     int balanceamento = fatorDeBalanceamento(no);
 
     // 4. Analisa os 4 casos de desbalanceamento e aplica as rotações
-
-    // Caso Esquerda-Esquerda
     if (balanceamento > 1 && valor < no->esquerdo->valor)
         return rotacaoDireita(no);
 
-    // Caso Direita-Direita
     if (balanceamento < -1 && valor > no->direito->valor)
         return rotacaoEsquerda(no);
 
-    // Caso Esquerda-Direita
     if (balanceamento > 1 && valor > no->esquerdo->valor) {
         no->esquerdo = rotacaoEsquerda(no->esquerdo);
         return rotacaoDireita(no);
     }
 
-    // Caso Direita-Esquerda
     if (balanceamento < -1 && valor < no->direito->valor) {
         no->direito = rotacaoDireita(no->direito);
         return rotacaoEsquerda(no);
     }
 
-    // Retorna o ponteiro do nó (inalterado se não houve rotação)
     return no;
 }
 
@@ -137,14 +131,11 @@ No *remover(No *raiz, int valor) {
 
     if (valor < raiz->valor){
         raiz->esquerdo = remover(raiz->esquerdo, valor);
-        printf("-> Remocao do valor %d concluida.", valor);
     }
     else if (valor > raiz->valor){
         raiz->direito = remover(raiz->direito, valor);
-        printf("-> Remocao do valor %d concluida.", valor);
     } 
     else {
-        // Nó encontrado
         // Caso 1 e 2: Nó com um filho ou nenhum filho
         if ((raiz->esquerdo == NULL) || (raiz->direito == NULL)) {
             No *temp = raiz->esquerdo ? raiz->esquerdo : raiz->direito;
@@ -154,23 +145,22 @@ No *remover(No *raiz, int valor) {
                 temp = raiz;
                 raiz = NULL;
             } else // Um filho
-                *raiz = *temp; // Copia o conteúdo do filho não vazio
+                *raiz = *temp; 
             
             free(temp);
+            printf("-> Remocao do valor %d concluida.\n", valor);
         } else {
             // Caso 3: Nó com dois filhos
-            // Obtém o sucessor em ordem (o menor valor da sub-árvore direita)
             No *temp = noMinimo(raiz->direito);
             
             // Copia o valor do sucessor para este nó
             raiz->valor = temp->valor;
             
-            // Remove o sucessor
+            // Remove o sucessor (não imprime mensagem duplicada)
             raiz->direito = remover(raiz->direito, temp->valor);
         }
     }
 
-    // Se a árvore tinha apenas um nó, retorna
     if (raiz == NULL)
         return raiz;
 
@@ -181,22 +171,17 @@ No *remover(No *raiz, int valor) {
     int balanceamento = fatorDeBalanceamento(raiz);
 
     // 4. Analisa os casos de desbalanceamento e aplica as rotações
-
-    // Caso Esquerda-Esquerda
     if (balanceamento > 1 && fatorDeBalanceamento(raiz->esquerdo) >= 0)
         return rotacaoDireita(raiz);
 
-    // Caso Esquerda-Direita
     if (balanceamento > 1 && fatorDeBalanceamento(raiz->esquerdo) < 0) {
         raiz->esquerdo = rotacaoEsquerda(raiz->esquerdo);
         return rotacaoDireita(raiz);
     }
 
-    // Caso Direita-Direita
     if (balanceamento < -1 && fatorDeBalanceamento(raiz->direito) <= 0)
         return rotacaoEsquerda(raiz);
 
-    // Caso Direita-Esquerda
     if (balanceamento < -1 && fatorDeBalanceamento(raiz->direito) > 0) {
         raiz->direito = rotacaoDireita(raiz->direito);
         return rotacaoEsquerda(raiz);
