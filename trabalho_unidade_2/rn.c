@@ -294,7 +294,7 @@ void removerRN(NoRN **raiz, int valor) {
         printf("Aviso: O valor %d nao foi encontrado para remocao.\n", valor);
         return;
     }else{
-        printf("-> Remocao concluida.")
+        printf("-> Remocao concluida.");
     }
 
     NoRN *y = z;
