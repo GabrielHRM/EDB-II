@@ -26,16 +26,18 @@ O repositório está organizado para fornecer acesso direto ao código-fonte com
 
 ```text
     EDB-II/
-├── trabalho_unidade_2/               # Pasta do trabalho da Unidade 2
-│   ├── Apresentacao_arvore_AVL_RN    # Apresentação do projeto (slides)
-│   ├── amazon_trees.exe              # Versão compilada do programa
-│   ├── avl.c                         # Lógica e balanceamento da Árvore AVL
-│   ├── avl.h                         # Cabeçalho e estruturas da Árvore AVL
-│   ├── main.c                        # Menu e ponto de entrada principal
-│   ├── rn.c                          # Lógica e balanceamento da Árvore Rubro-Negra
-│   └── rn.h                          # Cabeçalho e estruturas da Árvore Rubro-Negra
-├── .gitattributes                    # Configurações do repositório Git
-└── README.md                         # Documentação principal do projeto
+├── trabalho_unidade_2/           # Pasta principal do projeto
+│   ├── testes/                   # Capturas de tela (prints) com evidências dos testes
+│   ├── amazon_trees.exe          # Versão compilada e executável do programa
+│   ├── Apresentacao_arvores...   # Apresentação técnica do trabalho (slides/PDF)
+│   ├── avl.c                     # Lógica e rebalanceamento da Árvore AVL
+│   ├── avl.h                     # Cabeçalho e estruturas da Árvore AVL
+│   ├── main.c                    # Menu interativo e ponto de entrada principal
+│   ├── README.md                 # Documentação interna da pasta
+│   ├── rn.c                      # Lógica e rebalanceamento da Árvore Rubro-Negra
+│   └── rn.h                      # Cabeçalho e estruturas da Árvore Rubro-Negra
+├── .gitattributes                # Configurações do repositório Git
+└── README.md                     # Documentação principal do repositório
 ```
 
 ---
