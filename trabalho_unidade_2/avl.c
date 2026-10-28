@@ -73,12 +73,14 @@ No *inserir(No *no, int valor) {
     if (no == NULL)
         return novoNo(valor);
 
-    if (valor < no->valor)
+    if (valor < no->valor){
         no->esquerdo = inserir(no->esquerdo, valor);
         printf("-> Valor %d inserido.", valor);
-    else if (valor > no->valor)
+    }
+    else if (valor > no->valor){
         no->direito = inserir(no->direito, valor);
         printf("-> Valor %d inserido.", valor);
+    }
     else {
         // Valores repetidos não são permitidos
         printf("Aviso: O valor %d ja existe na arvore e nao sera inserido.\n", valor);
@@ -133,12 +135,14 @@ No *remover(No *raiz, int valor) {
         return raiz;
     }
 
-    if (valor < raiz->valor)
+    if (valor < raiz->valor){
         raiz->esquerdo = remover(raiz->esquerdo, valor);
         printf("-> Remocao do valor %d concluida.", valor);
-    else if (valor > raiz->valor)
+    }
+    else if (valor > raiz->valor){
         raiz->direito = remover(raiz->direito, valor);
         printf("-> Remocao do valor %d concluida.", valor);
+    } 
     else {
         // Nó encontrado
         // Caso 1 e 2: Nó com um filho ou nenhum filho

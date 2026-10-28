@@ -118,10 +118,14 @@ void inserirRN(NoRN **raiz, int valor) {
     // 1. Inserção normal de Árvore de Busca Binária
     while (x != NULL) {
         y = x;
-        if (z->valor < x->valor)
+        if (z->valor < x->valor){
             x = x->esquerdo;
-        else if (z->valor > x->valor)
+            printf("-> Valor %d inserido.", valor);
+        }
+        else if (z->valor > x->valor){
             x = x->direito;
+            printf("-> Valor %d inserido.", valor);
+        }
         else {
             // Valor repetido encontrado
             printf("Aviso: O valor %d ja existe na arvore e nao sera inserido.\n", valor);
@@ -289,6 +293,8 @@ void removerRN(NoRN **raiz, int valor) {
     if (z == NULL) {
         printf("Aviso: O valor %d nao foi encontrado para remocao.\n", valor);
         return;
+    }else{
+        printf("-> Remocao concluida.")
     }
 
     NoRN *y = z;
