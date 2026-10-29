@@ -13,7 +13,7 @@
 
 Este repositório contém a solução do **Amazon Engineering Challenge**, desenvolvido no âmbito da disciplina de Estruturas de Dados Básicas II. 
 
-Durante eventos de altíssimo tráfego de dados, como a **Black Friday**, o sistema de logística da Amazon demanda operações de inserção, busca e remoção de identificadores de encomendas com alta eficiência determinística $O(\log n)$. Como a ordem imprevisível ou sequencial de chegada dos dados pode degradar uma Árvore de Busca Binária (BST) convencional para tempo linear $O(n)$, este projeto implementa e compara duas estruturas auto-balanceadas desenvolvidas do zero em C++:
+Durante eventos de altíssimo tráfego de dados, como a **Black Friday**, o sistema de logística da Amazon demanda operações de inserção, busca e remoção de identificadores de encomendas com alta eficiência determinística $O(\log n)$. Como a ordem imprevisível ou sequencial de chegada dos dados pode degradar uma Árvore de Busca Binária (BST) convencional para tempo linear $O(n)$, este projeto implementa e compara duas estruturas auto-balanceadas desenvolvidas do zero em C:
 
 1. **Árvore AVL** (balanceamento estrito por fator de altura);
 2. **Árvore Rubro-Negra / Red-Black** (balanceamento por coloração e rotações).
