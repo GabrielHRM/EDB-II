@@ -29,7 +29,7 @@ int MaiorAposta(const std::vector<int>& apostas){
     int maior = apostas[0];
 
     for (size_t i = 1; i < v.size(); i++){
-        if(apostas[i] > menor){
+        if(apostas[i] > maior){
             maior = v[i];
         }
     }
